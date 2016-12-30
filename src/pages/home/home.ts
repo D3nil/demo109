@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { NavController } from 'ionic-angular';
-import { MyValidators } from '../../validators/validators';
 
 @Component({
   selector: 'page-home',
@@ -16,13 +15,17 @@ export class HomePage {
     public fb: FormBuilder
   ) {
     this.myForm = this.fb.group({
-      'name': ['', Validators.required],
+      'name': ['', [Validators.required]],
       'company': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
-      'email': ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)]],
-      'age': ['', [Validators.required, MyValidators.age] ],
-      'password': ['', [Validators.required]],
-      'confirmPassword': ['', [Validators.required]]
-    },{ validator: MyValidators.passwordMatcher });
+      'email': ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
+      'age': ['', [Validators.required]],
+      'url': ['', [Validators.pattern(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)]],
+      'password': ['', [Validators.pattern(/^[a-z0-9_-]{6,18}$/)]],
+    });
+  }
+
+  saveData(){
+    alert(JSON.stringify(this.myForm.value));
   }
 
 }
