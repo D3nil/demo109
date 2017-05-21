@@ -16,12 +16,12 @@ export class HomePage {
     public fb: FormBuilder
   ) {
     this.myForm = this.fb.group({
-      'name': ['', [Validators.required]],
-      'company': ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
-      'email': ['', [Validators.required, Validators.pattern(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/)]],
-      'age': ['', [Validators.required]],
-      'url': ['', [Validators.pattern(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)]],
-      'password': ['', [Validators.pattern(/^[a-z0-9_-]{6,18}$/)]],
+      name: ['', [Validators.required]],
+      company: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      email: ['', [Validators.required, Validators.required]],
+      age: ['', [Validators.required]],
+      url: ['', [Validators.pattern(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)]],
+      password: ['', [Validators.pattern(/^[a-z0-9_-]{6,18}$/)]],
     });
   }
 
